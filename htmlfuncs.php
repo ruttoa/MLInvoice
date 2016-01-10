@@ -58,7 +58,7 @@ function htmlPageStart($strTitle, $arrExtraScripts = null)
         $xUACompatible = "  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n";
     else
         $xUACompatible = '';
-    $theme = defined('_UI_THEME_LOCATION_') ? _UI_THEME_LOCATION_ : 'jquery/css/theme/jquery-ui.min.css';
+    $theme = defined('_UI_THEME_LOCATION_') ? _UI_THEME_LOCATION_ : 'bootstrap/css/bootstrap-theme.css';
     $lang = isset($_SESSION['sesLANG']) ? $_SESSION['sesLANG'] : 'fi-FI';
     $datePickerOptions = $GLOBALS['locDatePickerOptions'];
     $select2locale = '';
@@ -75,15 +75,18 @@ EOT;
   <meta http-equiv="Content-Type" content="text/html; charset=$charset">
 $xUACompatible  <title>$strTitle</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="$theme">
   <link rel="stylesheet" type="text/css" href="jquery/css/ui.daterangepicker.css">
   <link href="select2/select2.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/bs/dt-1.10.10,af-2.1.0,r-2.0.0/datatables.min.css"/>
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  <!--link rel="stylesheet" type="text/css" href="$theme"-->
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript" src="jquery/js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="jquery/js/jquery.json-2.3.min.js"></script>
   <script type="text/javascript" src="jquery/js/jquery.cookie.js"></script>
   <script type="text/javascript" src="jquery/js/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="datatables/datatables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/s/bs/dt-1.10.10,af-2.1.0,r-2.0.0/datatables.min.js"></script>
   <script type="text/javascript" src="jquery/js/jquery.floatingmessage.js"></script>
   <script type="text/javascript" src="js/date.js"></script>
   <script type="text/javascript" src="js/date-$lang.js"></script>
@@ -93,18 +96,6 @@ $xUACompatible  <title>$strTitle</title>
   <script type="text/javascript">
 $(document).ready(function() {
   $.datepicker.setDefaults($datePickerOptions);
-  $('a[class~="actionlink"]').button();
-  $('a[class~="tinyactionlink"]').button();
-  $('a[class~="buttonlink"]').button();
-  $('a[class~="formbuttonlink"]').button();
-  $('#maintabs ul li').hover(
-    function () {
-      $(this).addClass("ui-state-hover");
-    },
-    function () {
-      $(this).removeClass("ui-state-hover");
-    }
-  );
 });
   </script>
 
@@ -143,7 +134,7 @@ function htmlListBox($strName, $astrValues, $strSelected, $strStyle = '',
     }
     if ($astrAdditionalAttributes)
         $astrAdditionalAttributes = " $astrAdditionalAttributes";
-    $strListBox = "<select class=\"$strStyle\" id=\"$strName\" name=\"$strName\"{$strOnChange}{$astrAdditionalAttributes}>\n";
+    $strListBox = "<select class=\"$strStyle form-control\" id=\"$strName\" name=\"$strName\"{$strOnChange}{$astrAdditionalAttributes}>\n";
     if ($blnShowEmpty) {
         $strListBox .= '<option value=""' . ($strSelected ? '' : ' selected') .
              "> - </option>\n";
@@ -219,25 +210,25 @@ function htmlFormElement($strName, $strType, $strValue, $strStyle, $strListQuery
             $autocomplete = '';
         }
 
-        $strFormElement = "<input type=\"text\" class=\"$strStyle\"$autocomplete " .
+        $strFormElement = "<input type=\"text\" class=\"$strStyle form-control\"$autocomplete" .
              "id=\"$strName\" name=\"$strName\" value=\"" .
              htmlspecialchars($strValue) . "\"$astrAdditionalAttributes$readOnly>\n";
         break;
 
     case 'PASSWD' :
-        $strFormElement = "<input type=\"password\" class=\"$strStyle\" " .
+        $strFormElement = "<input type=\"password\" class=\"$strStyle form-control\" " .
              "id=\"$strName\" name=\"$strName\" value=\"\"$astrAdditionalAttributes$readOnly>\n";
         break;
 
     case 'CHECK' :
         $strValue = $strValue ? 'checked' : '';
-        $strFormElement = "<input type=\"checkbox\" id=\"$strName\" name=\"$strName\" value=\"1\" " .
+        $strFormElement = "<input type=\"checkbox\" id=\"$strName\" name=\"$strName form-control\" value=\"1\" " .
              htmlspecialchars($strValue) . "$astrAdditionalAttributes$disabled>\n";
         break;
 
     case 'RADIO' :
         $strChecked = $strValue ? 'checked' : '';
-        $strFormElement = "<input type=\"radio\" id=\"$strName\" name=\"$strName\" value=\"" .
+        $strFormElement = "<input type=\"radio\" id=\"$strName\" name=\"$strName form-control\" value=\"" .
              htmlspecialchars($strValue) . "\"$astrAdditionalAttributes$disabled>\n";
         break;
 
@@ -249,13 +240,13 @@ function htmlFormElement($strName, $strType, $strValue, $strStyle, $strListQuery
         }
         if ($hideZero && $strValue == 0)
             $strValue = '';
-        $strFormElement = "<input type=\"text\" class=\"$strStyle\" " .
+        $strFormElement = "<input type=\"text\" class=\"$strStyle form-control\" " .
              "id=\"$strName\" name=\"$strName\" value=\"" .
              htmlspecialchars($strValue) . "\"$astrAdditionalAttributes$readOnly>\n";
         break;
 
     case 'INTDATE' :
-        $strFormElement = "<input type=\"text\" class=\"$strStyle hasCalendar\" " .
+        $strFormElement = "<input type=\"text\" class=\"$strStyle form-control hasCalendar\" " .
              "id=\"$strName\" name=\"$strName\" value=\"" .
              htmlspecialchars($strValue) . "\"$astrAdditionalAttributes$readOnly>\n";
         break;
@@ -267,7 +258,7 @@ function htmlFormElement($strName, $strType, $strValue, $strStyle, $strListQuery
         break;
 
     case 'AREA' :
-        $strFormElement = '<textarea rows="24" cols="80" class="' . $strStyle . '" ' .
+        $strFormElement = '<textarea class="form-control ' . $strStyle . '" ' .
              'id="' . $strName . '" name="' . $strName .
              "\"$astrAdditionalAttributes$readOnly>" . $strValue . "</textarea>\n";
         break;
@@ -289,7 +280,7 @@ function htmlFormElement($strName, $strType, $strValue, $strStyle, $strListQuery
             $strFormElement = htmlSQLListBox($strName, $strListQuery, $strValue,
                 $strStyle, false, $astrAdditionalAttributes, $translate);
         } else {
-            $strFormElement = "<input type=\"text\" class=\"$strStyle\" " .
+            $strFormElement = "<input type=\"text\" class=\"$strStyle form-control\" " .
                  "id=\"$strName\" name=\"$strName\" value=\"" .
                  htmlspecialchars(
                     getSQLListBoxSelectedValue($strListQuery, $strValue, $translate)) .
@@ -424,7 +415,7 @@ EOT;
                  "status=no,toolbar=no'); return false;\"";
             break;
         }
-        $strFormElement = "<a class=\"formbuttonlink\" href=\"$strHref\" $strOnClick$astrAdditionalAttributes>" .
+        $strFormElement = "<a class=\"formbuttonlink btn btn-default\" href=\"$strHref\" $strOnClick$astrAdditionalAttributes>" .
              htmlspecialchars($strTitle) . "</a>\n";
         break;
 
@@ -435,7 +426,7 @@ EOT;
             if ($strValue)
                 $strListQuery = str_replace('_ID_', $strValue, $strListQuery);
             $strOnClick = "onClick=\"$strListQuery\"";
-            $strFormElement = "<a class=\"formbuttonlink\" href=\"#\" $strOnClick$astrAdditionalAttributes>" .
+            $strFormElement = "<a class=\"formbuttonlink btn btn-default\" href=\"#\" $strOnClick$astrAdditionalAttributes>" .
                  htmlspecialchars($strTitle) . "</a>\n";
         }
         break;

@@ -138,17 +138,28 @@ $astrMainButtons = [
 ?>
 
 <body>
-	<div class="pagewrapper ui-widget-content">
-		<div class="ui-widget">
-			<div id="maintabs" class="navi ui-widget-header ui-tabs">
-				<ul class="ui-tabs-nav ui-helper-clearfix ui-corner-all">
+	<div class="pagewrapper">
+			<nav class="navbar navbar-default">
+      
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navi" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+      <div class="collapse navbar-collapse" id="main-navi">
+				<ul class="nav navbar-nav">
 <?php
 foreach ($astrMainButtons as $button) {
-    $strButton = '<li class="functionlink ui-state-default ui-corner-top';
+    $strButton = '<li class="';
     if ($button['action'] == $strFunc ||
          ($button['action'] == 'open_invoices' && $strFunc == 'invoices'))
-        $strButton .= ' ui-tabs-selected ui-state-active';
-    $strButton .= '"><a class="ui-tabs-anchor functionlink" href="?func=' . $button['action'] . '">';
+        $strButton .= ' active';
+    $strButton .= '"><a href="?func=' . $button['action'] . '">';
     $strButton .= $GLOBALS[$button['title']] . '</a></li>';
     
     if (!isset($button['levels_allowed']) ||
@@ -158,7 +169,10 @@ foreach ($astrMainButtons as $button) {
 }
 ?>
     </ul>
-			</div>
+    </div>
+    </div>
+			</nav>
+  <div class="container">
 <?php
 
 $level = 1;
@@ -178,7 +192,7 @@ foreach ($arrHistory as $arrHE) {
 }
 
 ?>
-  <div class="breadcrumbs">
+  <div class="breadcrumb">
     <?php echo $strBreadcrumbs . "\n"?>
   </div>
 <?php

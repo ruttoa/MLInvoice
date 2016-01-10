@@ -42,7 +42,7 @@ echo htmlPageStart(_PAGE_TITLE_);
 ?>
 
 <body>
-	<div class="pagewrapper ui-widget ui-widget-content">
+	<div class="pagewrapper">
 		<div style="padding: 30px;">
 
 			<h1><?php echo $GLOBALS['locThankYou']?></h1>

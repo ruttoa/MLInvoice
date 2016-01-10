@@ -120,7 +120,7 @@ function createFuncMenu($strFunc)
             break;
         }
         if ($strNewText)
-            $strNewButton = "<br/><br/><a class=\"buttonlink new_button\" href=\"?func=system&amp;list=$strList&amp;form=$strList\">$strNewText</a>";
+            $strNewButton = "<br/><br/><a class=\"btn btn-default new_button\" href=\"?func=system&amp;list=$strList&amp;form=$strList\">$strNewText</a>";
         break;
     
     case 'settings' :
@@ -161,7 +161,7 @@ function createFuncMenu($strFunc)
             break;
         }
         if ($strNewText)
-            $strNewButton = "<br/><br/><a class=\"buttonlink\" href=\"?func=settings&amp;list=$strList&amp;form=$strList\">$strNewText</a>";
+            $strNewButton = "<br/><br/><a class=\"btn btn-default\" href=\"?func=settings&amp;list=$strList&amp;form=$strList\">$strNewText</a>";
         break;
     
     case 'reports' :
@@ -202,7 +202,7 @@ function createFuncMenu($strFunc)
         $strFormName = 'company';
         $strFormSwitch = 'company';
         $astrNaviLinks = [];
-        $strNewButton = '<a class="buttonlink" href="?func=companies&amp;form=company">' .
+        $strNewButton = '<a class="btn btn-default" href="?func=companies&amp;form=company">' .
              $GLOBALS['locNewClient'] . '</a>';
         break;
     
@@ -229,7 +229,7 @@ function createFuncMenu($strFunc)
                 ]
             ];
         if ($strFunc != 'archived_invoices') {
-            $strNewButton = '<a class="buttonlink" href="?func=invoices&amp;form=invoice">' .
+            $strNewButton = '<a class="btn btn-primary" href="?func=invoices&amp;form=invoice">' .
                  $GLOBALS['locNewInvoice'] . '</a>';
             $astrNaviLinks[] = [
                 'href' => 'index.php?func=import_statement', 
@@ -294,19 +294,19 @@ function createFuncMenu($strFunc)
                  getRequest('form', '') == $linkParts['form']) && (!isset(
                     $linkParts['operation']) ||
                  getRequest('operation', '') == $linkParts['operation'])) {
-                $class = ' ui-state-highlight';
+                $class = ' active';
             }
             ?>
-    <a class="buttonlink<?php echo $class?>"
+    <a class="btn btn-default<?php echo $class?>"
 		href="<?php echo $strHref?>"><?php echo $link['text']?></a>
 <?php
         }
     }
     if ($blnShowSearch) {
         ?>
-    <a class="buttonlink" href="#"
+    <a class="btn btn-default" href="#"
 		onClick="openSearchWindow('ext', event); return false;"><?php echo $GLOBALS['locExtSearch']?></a>
-	<a class="buttonlink" href="#"
+	<a class="btn btn-default" href="#"
 		onClick="openSearchWindow('quick', event); return false;"><?php echo $GLOBALS['locQuickSearch']?></a>
 <?php
     }

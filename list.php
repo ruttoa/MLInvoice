@@ -125,8 +125,9 @@ function createList($strFunc, $strList, $strTableName = '', $strTitleOverride = 
   </script>
 
 <div class="list_container">
-	<div id="<?php echo $strTableName?>_title" class="table_header"><?php echo $strTitle?></div>
-	<table id="<?php echo $strTableName?>" class="list">
+	<h3 id="<?php echo $strTableName?>_title" class="table_header"><?php echo $strTitle?></h3>
+  <div class="table-responsive">
+	<table id="<?php echo $strTableName?>" class="list table table-hover">
 		<thead>
 			<tr>
 				<th>Link</th>
@@ -144,6 +145,7 @@ function createList($strFunc, $strList, $strTableName = '', $strTitleOverride = 
 		<tbody>
 		</tbody>
 	</table>
+  </div>
 	<br>
 </div>
 <?php
@@ -353,7 +355,7 @@ function createJSONSelectList($strList, $startRow, $rowCount, $filter, $sort,
 
     if (!sesAccessLevel($levelsAllowed) && !sesAdminAccess()) {
         ?>
-<div class="form_container ui-widget-content">
+<div class="form_container">
     <?php echo $GLOBALS['locNoAccess'] . "\n"?>
   </div>
 <?php

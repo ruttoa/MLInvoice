@@ -1,3 +1,85 @@
+/* Bootstrap overrides*/
+
+
+label {
+  font-weight: normal;
+}
+
+/* Other */
+
+#version {
+  float: right;
+  margin-top: 4px;
+  margin-right: 10px; 
+}
+
+.function_navi {
+	margin-bottom: 40px;
+}
+.upper-form .row {
+  margin-bottom: 10px;
+}
+.form_buttons {
+  margin-bottom: 40px;
+}
+.form-label, .toplabel{
+  text-align: right;
+}
+.iform .form-label{
+  text-align: left;
+}
+input.hasCalendar {
+  max-width: 120px;
+  display: inline-block;
+}
+.small{
+  font-size: 100%;
+}
+.select2-search input, .select2-results {
+	font-size: 1.2em;
+	font-family: Verdana,Arial,sans-serif;
+}
+
+/* List tables */
+
+thead {
+  background-color: #f5f5f5;
+}
+.iform thead {
+  background-color: transparent;
+}
+table.list td {
+  cursor: pointer;
+}
+tr.overdue td:nth-child(2) {
+  background-color: #FFCCDD;
+}
+tr.overdue7 td:nth-child(2) {
+  background-color: #FF99AA;
+}
+tr.overdue14 td:nth-child(2) {
+  background-color: #FF5566;
+}
+tr.deleted {
+	text-decoration: line-through;
+}
+tr.summary {
+  background-color: transparent!important;
+}
+tr.summary td {
+  font-weight: bold;
+  background-color: transparent;
+  border-top: 0px!important;
+}
+td.error {
+  font-weight: bold;
+  background-color: #8d5153;
+}
+td.currency{
+  text-align: right;
+}
+
+/*
 @import url('table.css');
 
 html {
@@ -6,7 +88,6 @@ html {
 
 body {
   margin: 0;
-  font-size: 62.5%;
   height: 100%;
 }
 
@@ -16,7 +97,7 @@ form {
 }
 
 h1 {
-  font-size: 1.1em;
+  
 }
 
 div.pagewrapper {
@@ -493,3 +574,4 @@ img.image {
   background: rgba(0, 0, 0, 0.0);
   cursor: pointer;
 }
+*/

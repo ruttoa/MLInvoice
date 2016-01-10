@@ -333,13 +333,13 @@ case 'product' :
         $popupHTML = <<<EOS
 <script type="text/javascript" src="js/stock_balance.js"></script>
 <div id="update_stock_balance" class="form_container ui-widget-content" style="display: none">
-  <div class="medium_label">$locStockBalanceChange</div> <div class="field"><input type='TEXT' id="stock_balance_change" class='short'></div>
-  <div class="medium_label">$locStockBalanceChangeDescription</div> <div class="field"><textarea id="stock_balance_change_desc" class="large"></textarea></div>
+  <div class="medium_label">$locStockBalanceChange</div> <div class="field"><input type='TEXT' id="stock_balance_change" class='short form-control'></div>
+  <div class="medium_label">$locStockBalanceChangeDescription</div> <div class="field"><textarea id="stock_balance_change_desc" class="large form-control"></textarea></div>
   </div>
 EOS;
 
         $updateStockBalanceCode = <<<EOS
-<a class="formbuttonlink" href="#" onclick="update_stock_balance({'save': '$locSave', 'close': '$locClose', 'title': '$locTitle', 'missing': '$locMissing: ', 'decimal_separator': '$locDecimalSeparator'})">$locUpdateStockBalance</a>
+<a class="btn btn-default" href="#" onclick="update_stock_balance({'save': '$locSave', 'close': '$locClose', 'title': '$locTitle', 'missing': '$locMissing: ', 'decimal_separator': '$locDecimalSeparator'})">$locUpdateStockBalance</a>
 
 EOS;
     }
@@ -600,7 +600,7 @@ EOS;
 
         $locUpdateDates = $GLOBALS['locUpdateDates'];
         $updateDates = <<<EOS
-<a class="formbuttonlink" href="#" onclick="$.getJSON('json.php?func=get_invoice_defaults', {id: $('#record_id').val(), invoice_no: $('#invoice_no').val(), invoice_date: $('#invoice_date').val(), base_id: $('#base_id').val(), company_id: $('#company_id').val(), interval_type: $('#interval_type').val()}, function(json) { $('#invoice_date').val(json.date); $('#due_date').val(json.due_date); $('#next_interval_date').val(json.next_interval_date); $('.save_button').addClass('ui-state-highlight'); }); return false;">$locUpdateDates</a>
+<a class="btn btn-default" href="#" onclick="$.getJSON('json.php?func=get_invoice_defaults', {id: $('#record_id').val(), invoice_no: $('#invoice_no').val(), invoice_date: $('#invoice_date').val(), base_id: $('#base_id').val(), company_id: $('#company_id').val(), interval_type: $('#interval_type').val()}, function(json) { $('#invoice_date').val(json.date); $('#due_date').val(json.due_date); $('#next_interval_date').val(json.next_interval_date); $('.save_button').addClass('ui-state-highlight'); }); return false;">$locUpdateDates</a>
 EOS;
 
         $locNew = $GLOBALS['locNew'] . '...';
@@ -616,19 +616,19 @@ EOS;
         $locTitle = $GLOBALS['locNewClient'];
         $locMissing = $GLOBALS['locErrValueMissing'];
         $addCompanyCode = <<<EOS
-<a class="formbuttonlink" href="#" onclick="add_company({'save': '$locSave', 'close': '$locClose', 'title': '$locTitle', 'missing': '$locMissing: '})">$locNew</a>
+<a class="btn btn-default" href="#" onclick="add_company({'save': '$locSave', 'close': '$locClose', 'title': '$locTitle', 'missing': '$locMissing: '})">$locNew</a>
 
 EOS;
 
         $popupHTML = <<<EOS
 <div id="quick_add_company" class="form_container ui-widget-content" style="display: none">
-  <div class="medium_label">$locClientName</div> <div class="field"><input type='TEXT' id="quick_name" class='medium'></div>
-  <div class="medium_label">$locEmail</div> <div class="field"><input type='TEXT' id="quick_email" class='medium'></div>
-  <div class="medium_label">$locPhone</div> <div class="field"><input type='TEXT' id="quick_phone" class='medium'></div>
-  <div class="medium_label">$locAddress</div> <div class="field"><input type='TEXT' id="quick_street_address" class='medium'></div>
-  <div class="medium_label">$locZip</div> <div class="field"><input type='TEXT' id="quick_zip_code" class='medium'></div>
-  <div class="medium_label">$locCity</div> <div class="field"><input type='TEXT' id="quick_city" class='medium'></div>
-  <div class="medium_label">$locCountry</div> <div class="field"><input type='TEXT' id="quick_country" class='medium'></div>
+  <div class="medium_label">$locClientName</div> <div class="field"><input type='TEXT' id="quick_name" class='medium form-control'></div>
+  <div class="medium_label">$locEmail</div> <div class="field"><input type='TEXT' id="quick_email" class='medium form-control'></div>
+  <div class="medium_label">$locPhone</div> <div class="field"><input type='TEXT' id="quick_phone" class='medium form-control'></div>
+  <div class="medium_label">$locAddress</div> <div class="field"><input type='TEXT' id="quick_street_address" class='medium form-control'></div>
+  <div class="medium_label">$locZip</div> <div class="field"><input type='TEXT' id="quick_zip_code" class='medium form-control'></div>
+  <div class="medium_label">$locCity</div> <div class="field"><input type='TEXT' id="quick_city" class='medium form-control'></div>
+  <div class="medium_label">$locCountry</div> <div class="field"><input type='TEXT' id="quick_country" class='medium form-control'></div>
 </div>
 
 EOS;
@@ -640,8 +640,8 @@ EOS;
 
         $popupHTML .= <<<EOS
 <div id="add_partial_payment" class="form_container ui-widget-content" style="display: none">
-  <div class="medium_label">{$GLOBALS['locPaymentAmount']}</div> <div class="field"><input type='TEXT' id="add_partial_payment_amount" class='medium'></div>
-  <div class="medium_label">{$GLOBALS['locPayDate']}</div> <div class="field"><input type='TEXT' id="add_partial_payment_date" class='date hasCalendar'></div>
+  <div class="medium_label">{$GLOBALS['locPaymentAmount']}</div> <div class="field"><input type='TEXT' id="add_partial_payment_amount" class='medium form-control'></div>
+  <div class="medium_label">{$GLOBALS['locPayDate']}</div> <div class="field"><input type='TEXT' id="add_partial_payment_date" class='date hasCalendar form-control'></div>
 </div>
 
 EOS;
@@ -747,7 +747,7 @@ EOF;
     if (sesWriteAccess()) {
         if (!getSetting('invoice_add_number') ||
              !getSetting('invoice_add_reference_number')) {
-            $updateInvoiceNr = '<a class="formbuttonlink" href="#" onclick="' .
+            $updateInvoiceNr = '<a class="btn btn-default" href="#" onclick="' .
              $getInvoiceNr . '">' . $GLOBALS['locGetInvoiceNr'] . '</a>';
     }
 }
