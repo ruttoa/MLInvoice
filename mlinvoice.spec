@@ -1,5 +1,5 @@
 Name:		mlinvoice
-Version:	1.12.0
+Version:	1.12.1
 Release:	1%{?dist}
 Summary:	MLInvoice - Web application to create Finnish invoices
 Group:		Applications/Internet
@@ -68,6 +68,10 @@ EOM
 %{_datadir}/%{name}
 
 %changelog
+* Thu Dec 31 2015 Ere Maijala <ere@labs.fi> - 1.12.2-1
+- updated for version 1.12.1
+* Wed Dec 23 2015 Ere Maijala <ere@labs.fi> - 1.12.1-1
+- updated for version 1.12.1
 * Sun Dec 6 2015 Ere Maijala <ere@labs.fi> - 1.12.0-1
 - updated for version 1.12.0
 * Sat Mar 14 2015 Ere Maijala <ere@labs.fi> - 1.11.1-1
